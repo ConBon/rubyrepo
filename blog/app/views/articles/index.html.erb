@@ -1,21 +1,26 @@
-<h1>Listing Articles</h1>
-<%= link_to 'New Article', new_article_path %>
+<div class="main">
+<div class="title">
+  <h1>Articles</h1>
+</div>
+<div id="new_article_link">
+  <%= link_to 'New Article', new_article_path %>
+</div>
 <table>
-  <tr>
-    <th>Title</th>
-    <th>Text</th>
-    <th colspan="3"></th>
-  </tr>
-
   <% @articles.each do |article| %>
+    <tr id="table_row_Content">
+      <td><div class="circle"></div></td>
+      <td id="articleTitle"><%= article.title %></td>
+      <td id="articleBody"><%= article.text %></td>
+    </tr>  
+    <tr id="table_row_links">
+      <td class="tableLink"><%= link_to 'Show', article_path(article) %></td>
+      <td class="tableLink"><%= link_to 'Edit', edit_article_path(article) %></td>
+      <td class="tableLink"><%= link_to 'Destroy', article_path(article),
+          method: :delete, data: { confirm: 'Are you sure?' } %></td> 
+    </tr>
     <tr>
-      <td><%= article.title %></td>
-      <td><%= article.text %></td>
-      <td><%= link_to 'Show', article_path(article) %></td>
-      <td><%= link_to 'Edit', edit_article_path(article) %></td>
-      <td><%= link_to 'Destroy', article_path(article),
-      		method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      
+      <td><div class="hr"><hr /></div></td>
     </tr>
   <% end %>
 </table>
+</div>
